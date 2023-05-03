@@ -19,7 +19,7 @@ const Header = () => {
             </p>
           <div className="mt-8 flex flex-wrap gap-4 text-center">
             <a
-              href="#"
+              href="#ourChefs"
               className="block w-full rounded bg-orange-600 px-12 py-3 text-sm font-medium text-white shadow hover:bg-orange-700 focus:outline-none focus:ring active:bg-rose-500 sm:w-auto"
             >
               View Chefs
