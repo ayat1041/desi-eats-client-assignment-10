@@ -32,16 +32,16 @@ const NavigationBar = () => {
               className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
               <li>
-                <Link to="/">Home</Link>
+                <Link className="text-lg font-medium text-yellow-100" to="/">Home</Link>
               </li>
               <li>
-                <Link to="/login">Login</Link>
+                <Link className="text-lg font-medium text-yellow-100" to="/login">Login</Link>
               </li>
               <li>
-                <Link to="/signin">Sign up</Link>
+                <Link className="text-lg font-medium text-yellow-100" to="/signin">Sign up</Link>
               </li>
               <li>
-                <Link to="/blogs">Blogs</Link>
+                <Link className="text-lg font-medium text-yellow-100" to="/blogs">Blogs</Link>
               </li>
             </ul>
           </div>
@@ -55,16 +55,16 @@ const NavigationBar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             <li>
-              <Link to="/">Home</Link>
+              <Link className="text-lg font-medium text-yellow-100 focus:bg-orange-800" to="/">Home</Link>
             </li>
             <li>
-              <Link to="/login">Login</Link>
+              <Link className="text-lg font-medium text-yellow-100 focus:bg-orange-800" to="/blogs">Blogs</Link>
             </li>
             <li>
-              <Link to="/signin">Sign up</Link>
+              <Link className="text-lg font-medium text-yellow-100 focus:bg-orange-800" to="/login">Login</Link>
             </li>
             <li>
-              <Link to="/blogs">Blogs</Link>
+              <Link className="text-lg font-medium text-yellow-100 focus:bg-orange-800" to="/signin">Sign up</Link>
             </li>
           </ul>
         </div>
