@@ -11,7 +11,7 @@ const ChefCard = ({chef}) => {
             <h2 className='mt-5 ml-2'>{years_of_experience} <span className='ml-1'>Years of experience</span></h2>
             <h2 className='ml-2'><span className='flex'><GiHotMeal className='text-black text-lg mr-2'/><span>{number_of_recipes}</span><span className='ml-1'>Recipes</span></span></h2>
             <h2 className='ml-2'><span className='flex'><SlLike className='text-black text-lg mr-2'/><span>{likes}</span><span className='ml-1'>Likes</span></span></h2>
-            <Link to={`/chef/${id}`}><button className="btn w-full mt-5 bg-red-600 hover:bg-red-700 border-0">View Recipes</button></Link>
+            <Link className="w-full" to={`/chef/${id}`}><button className="btn w-full mt-5 bg-red-600 hover:bg-red-700 border-0">View Recipes</button></Link>
             </div>
         </div>
     );
