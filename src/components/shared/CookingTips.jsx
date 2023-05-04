@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 const CookingTips = () => {
   const [tips, setTips] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/tips`)
+    fetch(`https://desi-eats-server-ayat1041.vercel.app/tips`)
       .then((res) => res.json())
       .then((data) => setTips(data));
   }, []);

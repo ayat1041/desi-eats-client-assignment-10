@@ -8,6 +8,7 @@ import SignUp from "../components/pages/SignUp";
 import Blogs from "../components/pages/Blogs";
 import Chef from "../components/pages/Chef";
 import PrivateRoute from "./PrivateRoute";
+import ErrorPage from "../components/pages/ErrorPage";
   
 export const router = createBrowserRouter([
     {
@@ -33,7 +34,11 @@ export const router = createBrowserRouter([
         {
           path: "chef/:id",
           element: <PrivateRoute><Chef></Chef></PrivateRoute>,
-          loader: ({params})=>fetch(`http://localhost:5000/chef/${params.id}`)
+          loader: ({params})=>fetch(`https://desi-eats-server-ayat1041.vercel.app/chef/${params.id}`)
+        },
+        {
+          path: "/*",
+          element: <ErrorPage></ErrorPage>
         }
       ]
     },

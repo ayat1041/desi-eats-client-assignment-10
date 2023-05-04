@@ -1,11 +1,14 @@
 import { GiHotMeal } from 'react-icons/gi'
 import { SlLike } from 'react-icons/sl'
 import { Link } from 'react-router-dom';
+import LazyLoad from 'react-lazy-load';
 const ChefCard = ({chef}) => {
     const {id,chef_name,chef_picture,years_of_experience,number_of_recipes,likes} = chef;
     return (
         <div className="flex flex-col bg-gradient-to-t from-orange-300 to-transparent rounded-lg p-2 m-2">
+            <LazyLoad offset={300}>
             <img className="sm:w-full lg:w-[300px] h-[300px] object-cover object-top rounded-lg" src={chef_picture} alt="" />
+            </LazyLoad>
             <div className="flex flex-col items-start text-left h-full">
             <h2 className="mt-5 text-center w-full text-xl font-bold">{chef_name}</h2>
             <h2 className='mt-5 ml-2'>{years_of_experience} <span className='ml-1'>Years of experience</span></h2>

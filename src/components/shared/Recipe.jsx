@@ -4,6 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
+import LazyLoad from "react-lazy-load";
 
 const Recipe = ({ recipe }) => {
   const { recipe_name, ingredients, method, rating, recipe_image, _id } =
@@ -22,11 +23,13 @@ const Recipe = ({ recipe }) => {
       >
         {recipe_name}
       </h2>
+      <LazyLoad offset={300}>
       <img
         className="h-[300px] rounded-xl border-4 border-yellow-300"
         src={recipe_image}
         alt=""
       />
+      </LazyLoad>
       <div className="w-full mt-4 mb-2">
         <Rating
           className="mx-auto"
