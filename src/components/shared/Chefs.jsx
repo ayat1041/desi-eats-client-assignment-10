@@ -14,7 +14,7 @@ const Chefs = () => {
             <SiCodechef className='text-7xl text-amber-500 mb-4'/>
             <h2 className="text-lg lg:text-3xl font-bold">_Our Chefs_</h2>
             <p className='text-center font-medium tracking-wider mt-6 text-orange-700'>We have picked Countries best chefs recipes<br></br>to have an Orchestra of the Royale Indian Cuisine.</p>
-            <div className='grid grid-cols-1 lg:grid-cols-4 justify-center mt-8'>
+            <div className='grid grid-cols-1 lg:grid-cols-3 justify-center mt-8'>
             {
             chefs.chefs?.map(chef => <ChefCard key={chef.id} chef={chef}></ChefCard>)
             }
