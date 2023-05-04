@@ -4,10 +4,15 @@ import TipCard from "./TipCard";
 import { useState, useEffect } from "react";
 const CookingTips = () => {
   const [tips, setTips] = useState([]);
+  const [loader,setLoader] = useState(true);
   useEffect(() => {
     fetch(`https://desi-eats-server-ayat1041.vercel.app/tips`)
       .then((res) => res.json())
-      .then((data) => setTips(data));
+      .then((data) =>{
+       setTips(data);
+       setLoader(false);
+      }  
+      );
   }, []);
   return (
     <div>
@@ -21,6 +26,9 @@ const CookingTips = () => {
           Cooking is an art.<br></br>But always keep these things in mind to
           cook the best possible meal.
         </p>
+        {
+              loader? <progress className="progress w-[80vw] h-[200px] bg-red-600"></progress> : ""
+        }
         <div className="grid grid-cols-1 lg:grid-cols-3 justify-center mt-8">
           {tips.tips?.map((tip) => (
             <TipCard key={tip.id} tip={tip}></TipCard>
