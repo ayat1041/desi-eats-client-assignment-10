@@ -7,6 +7,7 @@ const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
 const githubProvider = new GithubAuthProvider();
 const AuthProviders = ({children}) => {
+    const [loading,setLoading] = useState(true);
     const [user,setUser] = useState(null)
 
     const createUser = (email,password) =>{
@@ -33,6 +34,7 @@ const AuthProviders = ({children}) => {
     useEffect(() =>{
         const unSubscribe = onAuthStateChanged(auth, currentUser=>{
             setUser(currentUser);
+            setLoading(false)
         });
         return () =>{
             unSubscribe();
@@ -47,7 +49,8 @@ const AuthProviders = ({children}) => {
         logOut,
         signIn,
         googleSignIn,
-        githubSignIn
+        githubSignIn,
+        loading
     }
     return (
         <AuthContext.Provider value={authInfo}>

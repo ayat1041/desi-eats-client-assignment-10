@@ -1,16 +1,21 @@
 import React, { useContext, useState } from "react";
 import { FcGoogle } from 'react-icons/fc'
 import { VscGithub } from 'react-icons/vsc'
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProviders";
 const Login = () => {
   const [error,setError] = useState("")
+  const location = useLocation();
+  console.log('login page location', location);
+  const from = location.state?.from?.pathname || "/";
+  const navigate = useNavigate();
   const {signIn,googleSignIn,githubSignIn} = useContext(AuthContext);
   const handleGoogleLogin = () =>{
     googleSignIn()
     .then(result=>{
       const loggedUser = result.user;
       console.log(loggedUser);
+      navigate(from, {replace:true})
     })
     .catch(e=>console.log(e.message))
   }
@@ -19,6 +24,7 @@ const Login = () => {
     .then(result=>{
       const loggedUser = result.user;
       console.log(loggedUser);
+      navigate(from, {replace:true})
     })
     .catch(e=>console.log(e.message))
   }
@@ -33,6 +39,7 @@ const Login = () => {
       setError("")
       const loggedUser = result.user;
       console.log(loggedUser);
+      navigate(from, {replace:true})
     })
     .catch((error) => {
       const errorCode = error.code;

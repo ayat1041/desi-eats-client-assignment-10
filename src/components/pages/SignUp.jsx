@@ -1,10 +1,11 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { VscGithub } from "react-icons/vsc";
 import { AuthContext } from "../../providers/AuthProviders";
 const SignUp = () => {
   const { user, createUser, updateUserProfile } = useContext(AuthContext);
+  const navigate = useNavigate();
   console.log(user);
   const [error, setError] = useState("");
   const handleSignUp = (event) => {
@@ -28,6 +29,7 @@ const SignUp = () => {
           updateUserProfile(name,photo)
           .then(()=>{
             console.log("profile pic added")
+            navigate("/")
           })
           .catch(e=>console.log(e))
         })
@@ -104,20 +106,6 @@ const SignUp = () => {
               <button className="btn btn-warning w-full m-1">Sign up</button>
             </div>
           </form>
-
-          <div>
-            <button className="btn bg-sky-100 text-slate-950 border-0 w-full m-1">
-              Login using Google
-              <FcGoogle className="ml-4 text-xl" />
-            </button>
-          </div>
-
-          <div>
-            <button className="btn bg-sky-100 text-slate-950 border-0 w-full m-1">
-              Login using Github
-              <VscGithub className="ml-4 text-xl" />
-            </button>
-          </div>
         </div>
       </div>
     </div>
