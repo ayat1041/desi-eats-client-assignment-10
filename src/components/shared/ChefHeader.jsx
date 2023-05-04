@@ -1,13 +1,13 @@
 import React from "react";
-import bannerHome from "../../assets/banner_home.jpg";
 import { GiHotMeal } from "react-icons/gi";
 import { SlLike } from "react-icons/sl";
 const ChefHeader = ({ data }) => {
   const { chef_name, bio, likes,number_of_recipes,years_of_experience, chef_picture } = data;
+  const banner = 'https://user-images.githubusercontent.com/57280365/236184950-97bb1880-51e1-4b00-b18c-078a82f973d1.jpg'
   return (
     <section
       className="relative bg-cover bg-center bg-no-repeat"
-      style={{ backgroundImage: `url(${bannerHome})` }}
+      style={{backgroundImage : `url(${banner})`}}
     >
       <div className="absolute inset-0 bg-[rgba(0,0,0,0.6)] lg:bg-gradient-to-r from-[rgba(0,0,0,0)] to-[rgba(0,0,0,0.7)]"></div>
 
