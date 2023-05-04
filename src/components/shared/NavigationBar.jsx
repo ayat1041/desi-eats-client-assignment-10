@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import ActiveLink from "./ActiveLink";
+import { AuthContext } from "../../providers/AuthProviders";
+import "react-tooltip/dist/react-tooltip.css";
+import { Tooltip } from "react-tooltip";
+import { Tooltip as ReactTooltip } from "react-tooltip";
 
 const NavigationBar = () => {
+  const { user, logOut } = useContext(AuthContext);
+  const handleLogOut = () => {
+    logOut()
+      .then()
+      .catch((error) => console.log(error));
+  };
   return (
     <nav>
       {/* <ActiveLink className='text-4xl' to="/">Home</ActiveLink>
@@ -81,11 +91,26 @@ const NavigationBar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <img
-            className="rounded-full w-10 border-2 border-yellow-200"
-            src="https://images.ctfassets.net/lh3zuq09vnm2/yBDals8aU8RWtb0xLnPkI/19b391bda8f43e16e64d40b55561e5cd/How_tracking_user_behavior_on_your_website_can_improve_customer_experience.png"
-            alt=""
-          />
+          {user ? (
+            <div className="flex">
+              <button
+                onClick={handleLogOut}
+                className="btn bg-orange-400 border-0 p-2 mr-2"
+              >
+                Logout
+              </button>
+              <img
+                data-tooltip-id="my-tooltip"
+                data-tooltip-content={user?.displayName}
+                className="rounded-full w-10 border-2 border-yellow-200"
+                src={user?.photoURL}
+                alt=""
+              />
+            </div>
+          ) : (
+            ""
+          )}
+          <Tooltip id="my-tooltip" className="z-50"/>
         </div>
       </div>
     </nav>

@@ -1,8 +1,48 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { FcGoogle } from 'react-icons/fc'
 import { VscGithub } from 'react-icons/vsc'
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProviders";
 const Login = () => {
+  const [error,setError] = useState("")
+  const {signIn,googleSignIn,githubSignIn} = useContext(AuthContext);
+  const handleGoogleLogin = () =>{
+    googleSignIn()
+    .then(result=>{
+      const loggedUser = result.user;
+      console.log(loggedUser);
+    })
+    .catch(e=>console.log(e.message))
+  }
+  const handleGithubLogin = () =>{
+    githubSignIn()
+    .then(result=>{
+      const loggedUser = result.user;
+      console.log(loggedUser);
+    })
+    .catch(e=>console.log(e.message))
+  }
+  const handleLogin = (event) =>{
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    signIn(email,password)
+    .then(result=>{
+      setError("")
+      const loggedUser = result.user;
+      console.log(loggedUser);
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      if(errorCode == "auth/wrong-password" || errorCode == "auth/user-not-found"){
+        setError("wrong login Credentials")
+      }
+      console.log(errorCode)
+    });
+
+  }
   return (
     <div>
       <div className="relative flex flex-col justify-center my-8">
@@ -10,7 +50,7 @@ const Login = () => {
           <h1 className="text-3xl font-semibold text-center text-orange-600">
             Login
           </h1>
-          <form className="space-y-4">
+          <form onSubmit={handleLogin} className="space-y-4">
             <div>
               <label className="label">
                 <span className="text-base label-text">Email</span>
@@ -20,6 +60,7 @@ const Login = () => {
                 type="text"
                 placeholder="Email Address"
                 className="w-full input input-bordered input-primary border-red-300"
+                required
               />
             </div>
             <div>
@@ -31,6 +72,7 @@ const Login = () => {
                 type="password"
                 placeholder="Enter Password"
                 className="w-full input input-bordered input-primary border-red-300 mb-4"
+                required
               />
             </div>
             <a
@@ -47,17 +89,18 @@ const Login = () => {
                Sign up here
             </Link>
             </span>
+            <span className="text-lg font-semibold text-red-700">{error}</span>
             <div>
               <button className="btn btn-warning w-full m-1">Login</button>
             </div>
           </form>
           
           <div>
-              <button className="btn bg-sky-100 text-slate-950 border-0 w-full m-1">Login using Google<FcGoogle className="ml-4 text-xl"/></button>
+              <button onClick={handleGoogleLogin} className="btn bg-sky-100 text-slate-950 border-0 w-full m-1">Login using Google<FcGoogle className="ml-4 text-xl"/></button>
             </div>
             
             <div>
-              <button className="btn bg-sky-100 text-slate-950 border-0 w-full m-1">Login using Github<VscGithub className="ml-4 text-xl"/></button>
+              <button onClick={handleGithubLogin} className="btn bg-sky-100 text-slate-950 border-0 w-full m-1">Login using Github<VscGithub className="ml-4 text-xl"/></button>
             </div>
         </div>
 
