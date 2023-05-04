@@ -1,10 +1,19 @@
-import React from "react";
-// const Rating = require("react-rating");
+import React, { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
+
 const Recipe = ({ recipe }) => {
-  const { recipe_name, ingredients, method, rating, recipe_image,_id } = recipe;
+  const { recipe_name, ingredients, method, rating, recipe_image, _id } =
+    recipe;
+  const [disable, setDisable] = useState(false);
+
+  const handleToast = () => toast(`${recipe_name} is marked as favourite`);
+  const handleDisable = () => {
+    setDisable(true);
+  };
   return (
     <div className="bg-yellow-200 p-4 m-4 rounded-md flex flex-col items-center shadow-lg">
       <h2
@@ -19,7 +28,12 @@ const Recipe = ({ recipe }) => {
         alt=""
       />
       <div className="w-full mt-4 mb-2">
-      <Rating className="mx-auto" style={{ maxWidth: 150 }} value={4} ReadOnly />
+        <Rating
+          className="mx-auto"
+          style={{ maxWidth: 150 }}
+          value={4}
+          ReadOnly
+        />
       </div>
       <h2 className="mt-6 mb-6 text-xl font-semibold w-full text-left">
         Ingredients
@@ -33,7 +47,41 @@ const Recipe = ({ recipe }) => {
         Method
       </h2>
       <p className="mb-4">{method}</p>
-      <button className="btn bg-red-600 text-white w-full border-0 mt-auto">Mark as Favorite</button>
+      {disable ? (
+        <button
+          onClick={() => {
+            handleToast();
+            handleDisable();
+          }}
+          className="btn bg-red-600 text-white w-full border-0 mt-auto"
+          disabled
+        >
+          Marked as Favorite
+        </button>
+      ) : (
+        <button
+          onClick={() => {
+            handleToast();
+            handleDisable();
+          }}
+          className="btn bg-red-600 text-white w-full border-0 mt-auto"
+        >
+          Mark as Favorite
+        </button>
+      )}
+      <ToastContainer
+        position="top-center"
+        autoClose={1000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss={false}
+        draggable
+        pauseOnHover={false}
+        theme="light"
+      >
+      </ToastContainer>
     </div>
   );
 };
