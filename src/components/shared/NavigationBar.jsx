@@ -1,13 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import ActiveLink from "./ActiveLink";
 
 const NavigationBar = () => {
   return (
     <nav>
-      {/* <Link className='text-4xl' to="/">Home</Link>
-            <Link to="/login">Login</Link>
-            <Link to="/signin">Sign up</Link>
-            <Link to="/blogs">Blogs</Link> */}
+      {/* <ActiveLink className='text-4xl' to="/">Home</ActiveLink>
+            <ActiveLink to="/login">Login</ActiveLink>
+            <ActiveLink to="/signin">Sign up</ActiveLink>
+            <ActiveLink to="/blogs">Blogs</ActiveLink> */}
       <div className="bg-orange-600 navbar shadow-md">
         <div className="navbar-start">
           <div className="dropdown">
@@ -29,19 +29,25 @@ const NavigationBar = () => {
             </label>
             <ul
               tabIndex={0}
-              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-slate-900 rounded-box w-52"
             >
               <li>
-                <Link className="text-lg font-medium text-yellow-100" to="/">Home</Link>
+                <ActiveLink to="/" title="Home"></ActiveLink>
               </li>
               <li>
-                <Link className="text-lg font-medium text-yellow-100" to="/login">Login</Link>
+                <ActiveLink to="/login" title="Login">
+                  Login
+                </ActiveLink>
               </li>
               <li>
-                <Link className="text-lg font-medium text-yellow-100" to="/signin">Sign up</Link>
+                <ActiveLink to="/signin" title="sign up">
+                  Sign up
+                </ActiveLink>
               </li>
               <li>
-                <Link className="text-lg font-medium text-yellow-100" to="/blogs">Blogs</Link>
+                <ActiveLink to="/blogs" title="blogs">
+                  Blogs
+                </ActiveLink>
               </li>
             </ul>
           </div>
@@ -55,21 +61,31 @@ const NavigationBar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             <li>
-              <Link className="text-lg font-medium text-yellow-100 focus:bg-orange-800" to="/">Home</Link>
+              <ActiveLink to="/" title="Home"></ActiveLink>
             </li>
             <li>
-              <Link className="text-lg font-medium text-yellow-100 focus:bg-orange-800" to="/blogs">Blogs</Link>
+              <ActiveLink to="/login" title="Login">
+                Login
+              </ActiveLink>
             </li>
             <li>
-              <Link className="text-lg font-medium text-yellow-100 focus:bg-orange-800" to="/login">Login</Link>
+              <ActiveLink to="/signin" title="sign up">
+                Sign up
+              </ActiveLink>
             </li>
             <li>
-              <Link className="text-lg font-medium text-yellow-100 focus:bg-orange-800" to="/signin">Sign up</Link>
+              <ActiveLink to="/blogs" title="blogs">
+                Blogs
+              </ActiveLink>
             </li>
           </ul>
         </div>
         <div className="navbar-end">
-          <img className="rounded-full w-10 border-2 border-yellow-200" src="https://images.ctfassets.net/lh3zuq09vnm2/yBDals8aU8RWtb0xLnPkI/19b391bda8f43e16e64d40b55561e5cd/How_tracking_user_behavior_on_your_website_can_improve_customer_experience.png" alt="" />
+          <img
+            className="rounded-full w-10 border-2 border-yellow-200"
+            src="https://images.ctfassets.net/lh3zuq09vnm2/yBDals8aU8RWtb0xLnPkI/19b391bda8f43e16e64d40b55561e5cd/How_tracking_user_behavior_on_your_website_can_improve_customer_experience.png"
+            alt=""
+          />
         </div>
       </div>
     </nav>
