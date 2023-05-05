@@ -99,11 +99,11 @@ const NavigationBar = () => {
               >
                 Logout
               </button>
-              <div className="w-12 h-12 overflow-hidden">
+              <div className="w-12 h-12 overflow-hidden rounded-full border-yellow-200 border-2">
               <img
                 data-tooltip-id="my-tooltip"
                 data-tooltip-content={user?.displayName}
-                className="rounded-full w-12 border-2 border-yellow-200"
+                className="w-12"
                 src={user?.photoURL}
                 alt=""
               />
