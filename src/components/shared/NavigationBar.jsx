@@ -102,7 +102,7 @@ const NavigationBar = () => {
               <img
                 data-tooltip-id="my-tooltip"
                 data-tooltip-content={user?.displayName}
-                className="rounded-full w-10 border-2 border-yellow-200"
+                className="rounded-full w-12 h-12 border-2 border-yellow-200"
                 src={user?.photoURL}
                 alt=""
               />
