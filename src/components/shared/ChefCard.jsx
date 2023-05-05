@@ -6,7 +6,7 @@ const ChefCard = ({chef}) => {
     const {id,chef_name,chef_picture,years_of_experience,number_of_recipes,likes} = chef;
     return (
         <div className="flex flex-col bg-gradient-to-t from-orange-300 to-transparent rounded-lg p-2 m-2">
-            <LazyLoad offset={300}>
+            <LazyLoad offset={20}>
             <img className="sm:w-full lg:w-[300px] h-[300px] object-cover object-top rounded-lg" src={chef_picture} alt="" />
             </LazyLoad>
             <div className="flex flex-col items-start text-left h-full">

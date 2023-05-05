@@ -8,7 +8,10 @@ const PrivateRoute = ({ children }) => {
   if (loading) {
     return (
       <div className="w-full h-screen flex items-center justify-center">
-        <progress className="progress w-56 h-[60px]"></progress>
+        <div
+          style={{ border: "32px solid orange" }}
+          class="mx-auto my-7 w-[300px] h-[300px] rounded-full animate-pulse"
+        ></div>
       </div>
     );
   }

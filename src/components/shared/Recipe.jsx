@@ -23,7 +23,7 @@ const Recipe = ({ recipe }) => {
       >
         {recipe_name}
       </h2>
-      <LazyLoad offset={300}>
+      <LazyLoad offset={50}>
       <img
         className="h-[300px] rounded-xl border-4 border-yellow-300"
         src={recipe_image}
